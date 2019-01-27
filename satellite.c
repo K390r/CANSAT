@@ -13,13 +13,12 @@ ISR(USART0_RX_vect){
 
 ISR(USART1_UDRE_vect){
 	if(rx0_transceive){
-		UDR1=rx0_data;
+		UDR1=ADCdata;
 		rx0_transceive=0;
 	}
 }
 
-ISR(ADC_vect)
-{
+ISR(ADC_vect){
 	ADCdata = ADCW;
 	ADCSRA = ADCSRA | 0x40;
 }
