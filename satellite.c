@@ -3,7 +3,7 @@
 #include <util/delay.h>
 #include <avr/interrupt.h>
 
-volatile uint8_t rx0_receive, rx0_transceive;
+volatile uint8_t rx0_receive, rx0_transceive,adc_receive;
 volatile float rx0_data, ADCdata;
 
 /*ISR(USART0_RX_vect){
@@ -19,7 +19,7 @@ ISR(USART1_UDRE_vect){
 }
 
 ISR(ADC_vect){
-	rx0_receive = 1;
+	adc_receive = 1;
 	ADCdata = ADCW;
 	ADCSRA = ADCSRA | 0x40;
 }
@@ -42,8 +42,8 @@ int main(){
 	ADC_INIT();
 	USART_INIT();
 	while(1){
-		if(rx0_receive){
-			rx0_receive = 0;
+		if(adc_receive){
+			adc_receive = 0;
 			ADCdata=(ADCdata*0.0049+5.1*0.095)/(5.1*0.009);
 			rx0_transceive = 1;
 		}
