@@ -38,6 +38,7 @@ void ADC_INIT(){
 int main(){
 	rx0_receive = 0;
 	sei();
+	ADC_INIT();
 	USART_INIT();
 	while(1){
 		if(rx0_receive){
