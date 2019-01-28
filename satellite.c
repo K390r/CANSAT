@@ -4,7 +4,7 @@
 #include <avr/interrupt.h>
 
 volatile uint8_t /*rx0_receive,*/ rx0_transceive, adc_receive, rx0_data,;
-volatile float ADCdata;
+volatile float ADCdata=0.0f;
 
 /*ISR(USART0_RX_vect){
 	rx0_receive = 1;
