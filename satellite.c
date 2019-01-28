@@ -6,10 +6,10 @@
 volatile uint8_t rx0_receive, rx0_transceive;
 volatile float rx0_data, ADCdata;
 
-ISR(USART0_RX_vect){
+/*ISR(USART0_RX_vect){
 	rx0_receive = 1;
 	rx0_data = UDR0;
-}
+}*/
 
 ISR(USART1_UDRE_vect){
 	if(rx0_transceive){
@@ -19,6 +19,7 @@ ISR(USART1_UDRE_vect){
 }
 
 ISR(ADC_vect){
+	rx0_receive = 1;
 	ADCdata = ADCW;
 	ADCSRA = ADCSRA | 0x40;
 }
