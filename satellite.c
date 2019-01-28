@@ -3,8 +3,8 @@
 #include <util/delay.h>
 #include <avr/interrupt.h>
 
-volatile uint8_t /*rx0_receive,*/ rx0_transceive,adc_receive;
-volatile float rx0_data, ADCdata;
+volatile uint8_t /*rx0_receive,*/ rx0_transceive, adc_receive, rx0_data,;
+volatile float ADCdata;
 
 /*ISR(USART0_RX_vect){
 	rx0_receive = 1;
